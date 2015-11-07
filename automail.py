@@ -19,7 +19,7 @@ filterfile = 'filter.txt'
 
 MASK = '***奇怪***'
 SUBJECT = 'MidyMidyIII-%sIRC聊天记录'
-ME = 'mc_bot <no-replay@MidyMidyMC>'
+ME = 'mc_bot <mc@localhost>'
 TO = 'leo_song <leo_songwei@outlook.com>'
 CONTENT_PREFIX = '%s聊天记录' % time.strftime('%Y年%m月%d日', yesterday)
 
@@ -72,5 +72,7 @@ def send_mail(mail):
 if __name__ == '__main__':
     try:
         send_mail(make_mail(gen_content()))
+        print 'Mail sent successfully!'
     except Exception as e:
+        print 'Mail sent failed!'
         print e
