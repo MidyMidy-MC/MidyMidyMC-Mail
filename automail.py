@@ -19,7 +19,7 @@ filterfile = 'filter.txt'
 
 MASK = '***奇怪***'
 SUBJECT = 'MidyMidyIII-%sIRC聊天记录'
-ME = 'mc_bot <no-replay@MidyMidyMC>'
+ME = 'mc_bot <mc@localhost>'
 TO = 'leo_song <leo_songwei@outlook.com>'
 CONTENT_PREFIX = '%s聊天记录' % time.strftime('%Y年%m月%d日', yesterday)
 
@@ -62,9 +62,17 @@ def make_mail(payload):
 
 def send_mail(mail):
     '''使用SMTP发送邮件'''
+    r = re.compile(r'<(.*@.*)>')
+    from_ = r.findall(ME)[0]
+    to = r.findall(TO)[0]
     S = smtplib.SMTP('localhost')
-    S.send(mail)
+    S.sendmail(from_, to, mail)
     S.quit()
 
 if __name__ == '__main__':
-    send_mail(make_mail(gen_content()))
+    try:
+        send_mail(make_mail(gen_content()))
+        print 'Mail sent successfully!'
+    except Exception as e:
+        print 'Mail sent failed!'
+        print e
