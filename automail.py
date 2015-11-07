@@ -12,7 +12,7 @@ import os
 yesterday = time.localtime(time.time() - 86400)
 today = time.localtime(time.time())
 
-########################以下内容可修改#################################
+# #######################以下内容可修改#################################
 
 logfile = os.environ['HOME'] + '/.znc/users/MidyMidyBot/moddata/log/#MidyMidymc_%s.log' % time.strftime('%Y%m%d', yesterday)
 filterfile = 'filter.txt'
@@ -23,7 +23,7 @@ ME = 'mc_bot <mc@localhost>'
 TO = 'leo_song <leo_songwei@outlook.com>'
 CONTENT_PREFIX = '%s聊天记录' % time.strftime('%Y年%m月%d日', yesterday)
 
-########################以上内容可修改#################################
+# #######################以上内容可修改#################################
 
 
 def gen_content():
@@ -71,8 +71,8 @@ def send_mail(mail):
 
 if __name__ == '__main__':
     try:
-        #send_mail(make_mail(gen_content()))
-        #print 'Mail sent successfully!'
+        # send_mail(make_mail(gen_content()))
+        # print 'Mail sent successfully!'
         print make_mail(gen_content())
 
     except Exception as e:
