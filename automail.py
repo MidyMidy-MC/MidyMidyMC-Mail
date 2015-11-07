@@ -70,4 +70,7 @@ def send_mail(mail):
     S.quit()
 
 if __name__ == '__main__':
-    send_mail(make_mail(gen_content()))
+    try:
+        send_mail(make_mail(gen_content()))
+    except Exception as e:
+        print e
