@@ -14,7 +14,7 @@ today = time.localtime(time.time())
 
 ########################以下内容可修改#################################
 
-logfile = os.environ['HOME'] + '#MidyMidymc_%s.log' % time.strftime('%Y%m%d', yesterday)
+logfile = os.environ['HOME'] + '/.znc/users/MidyMidyBot/moddata/log/#MidyMidymc_%s.log' % time.strftime('%Y%m%d', yesterday)
 filterfile = 'filter.txt'
 
 MASK = '***奇怪***'
