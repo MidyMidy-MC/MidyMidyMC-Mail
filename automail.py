@@ -20,7 +20,7 @@ filterfile = 'filter.txt'
 MASK = '***奇怪***'
 SUBJECT = 'MidyMidyIII-%sIRC聊天记录'
 ME = 'mc_bot <mc@localhost>'
-TO = 'leo_song <leo_songwei@outlook.com>'
+TO = 'tonychee <tonychee7000@126.com>'
 CONTENT_PREFIX = '%s聊天记录' % time.strftime('%Y年%m月%d日', yesterday)
 
 # #######################以上内容可修改#################################
@@ -57,7 +57,7 @@ def make_mail(payload):
     msg['Content-Type'] = 'text/plain; charset=utf-8'
     msg['Content-Transfer-Encoding'] = '8bit'
     msg.set_payload(payload)
-    return msg.as_string()
+    return msg.as_string(unixfrom=True)
 
 
 def send_mail(mail):
@@ -66,14 +66,13 @@ def send_mail(mail):
     from_ = r.findall(ME)[0]
     to = r.findall(TO)[0]
     S = smtplib.SMTP('localhost')
-    S.sendmail(from_, to, mail)
+    S.sendmail(None, to, mail)
     S.quit()
 
 if __name__ == '__main__':
     try:
-        # send_mail(make_mail(gen_content()))
-        # print 'Mail sent successfully!'
-        print make_mail(gen_content())
+        send_mail(make_mail(gen_content()))
+        print 'Mail sent successfully!'
 
     except Exception as e:
         print 'Mail sent failed!'
