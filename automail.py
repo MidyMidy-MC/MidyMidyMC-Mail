@@ -14,7 +14,8 @@ today = time.localtime(time.time())
 
 # #######################以下内容可修改#################################
 
-logfile = os.environ['HOME'] + '/.znc/users/MidyMidyBot/moddata/log/#MidyMidymc_%s.log' % time.strftime('%Y%m%d', yesterday)
+#logfile = os.environ['HOME'] + '/.znc/users/MidyMidyBot/moddata/log/#MidyMidymc_%s.log' % time.strftime('%Y%m%d', yesterday)
+logfile = '#MidyMidymc_%s.log' % time.strftime('%Y%m%d', yesterday)
 filterfile = 'filter.txt'
 
 MASK = '***奇怪***'
@@ -57,7 +58,7 @@ def make_mail(payload):
     msg['Content-Type'] = 'text/plain; charset=utf-8'
     msg['Content-Transfer-Encoding'] = '8bit'
     msg.set_payload(payload)
-    return msg.as_string()
+    return msg.as_string(unixfrom=True)
 
 
 def send_mail(mail):
