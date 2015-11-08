@@ -14,14 +14,13 @@ today = time.localtime(time.time())
 
 # #######################以下内容可修改#################################
 
-#logfile = os.environ['HOME'] + '/.znc/users/MidyMidyBot/moddata/log/#MidyMidymc_%s.log' % time.strftime('%Y%m%d', yesterday)
-logfile = '#MidyMidymc_%s.log' % time.strftime('%Y%m%d', yesterday)
+logfile = os.environ['HOME'] + '/.znc/users/MidyMidyBot/moddata/log/#MidyMidymc_%s.log' % time.strftime('%Y%m%d', yesterday)
 filterfile = 'filter.txt'
 
 MASK = '***奇怪***'
 SUBJECT = 'MidyMidyIII-%sIRC聊天记录'
 ME = 'mc_bot <mc@localhost>'
-TO = 'tonychee <tonychee1989@gmail.com>'
+TO = 'tonychee <tonychee7000@126.com>'
 CONTENT_PREFIX = '%s聊天记录' % time.strftime('%Y年%m月%d日', yesterday)
 
 # #######################以上内容可修改#################################
@@ -67,7 +66,7 @@ def send_mail(mail):
     from_ = r.findall(ME)[0]
     to = r.findall(TO)[0]
     S = smtplib.SMTP('localhost')
-    S.sendmail(from_, to, mail)
+    S.sendmail(None, to, mail)
     S.quit()
 
 if __name__ == '__main__':
