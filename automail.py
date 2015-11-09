@@ -26,7 +26,7 @@ CONTENT_PREFIX = '%s聊天记录' % time.strftime('%Y年%m月%d日', yesterday)
 SMTPSERVER = 'smtp-mail.outlook.com'
 SMTPPORT = 587
 ACCOUNT = 'midymidybot@outlook.com'
-PASSWORD = 'YP2b2Mq2sN4M'
+PASSWORD = 'PASSWORD'
 
 # #######################以上内容可修改#################################
 
