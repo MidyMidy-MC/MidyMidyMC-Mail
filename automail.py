@@ -62,7 +62,7 @@ def make_mail(payload):
     msg['Content-Type'] = 'text/plain; charset=utf-8'
     msg['Content-Transfer-Encoding'] = '8bit'
     msg.set_payload(payload)
-    return msg.as_string()
+    return msg.as_string(unixfrom=True).replace('nobody', '-', 1)
 
 
 def send_mail(mail):
