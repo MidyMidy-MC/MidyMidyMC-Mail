@@ -77,10 +77,13 @@ def send_mail(mail):
     S.quit()
 
 if __name__ == '__main__':
-    try:
-        send_mail(make_mail(gen_content()))
-        print 'Mail sent successfully!'
+    for i in range(5):
+        try:
+            send_mail(make_mail(gen_content()))
+            print 'Mail sent successfully!'
+            break
 
-    except Exception as e:
-        print 'Mail sent failed!'
-        print e
+        except Exception as e:
+            print 'Mail sent failed!'
+            print e
+            time.sleep(60)
