@@ -57,12 +57,12 @@ def make_mail(payload):
     msg = email.Message.Message()
     msg['To'] = TO
     msg['From'] = ME
-    msg['Date'] = time.strftime('%Y-%m-%d', today)
+    msg['Date'] = time.strftime('%a, %d %b %Y %H:%M:%S %z')
     msg['Subject'] = SUBJECT % time.strftime('%Y年%m月%d日', yesterday)
     msg['Content-Type'] = 'text/plain; charset=utf-8'
     msg['Content-Transfer-Encoding'] = '8bit'
     msg.set_payload(payload)
-    return msg.as_string(unixfrom=True).replace('nobody', '-', 1)
+    return msg.as_string()
 
 
 def send_mail(mail):
