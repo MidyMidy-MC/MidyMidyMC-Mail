@@ -19,9 +19,13 @@ filterfile = 'filter.txt'
 
 MASK = '***奇怪***'
 SUBJECT = 'MidyMidyIII-%sIRC聊天记录'
-ME = 'mc_bot <mc@localhost>'
-TO = 'midymidybot <midymidybot@outlook.com>'
+ME = 'MidyMidyBot <midymidybot@outlook.com>'
+TO = 'MidyMidyMC <tonychee1989@gmail.com>'
 CONTENT_PREFIX = '%s聊天记录' % time.strftime('%Y年%m月%d日', yesterday)
+
+SMTPSERVER = 'smtp-mail.outlook.com'
+ACCOUNT = 'midymidybot@outlook.com'
+PASSWORD = 'YP2b2Mq2sN4M'
 
 # #######################以上内容可修改#################################
 
@@ -65,7 +69,8 @@ def send_mail(mail):
     r = re.compile(r'<(.*@.*)>')
     from_ = r.findall(ME)[0]
     to = r.findall(TO)[0]
-    S = smtplib.SMTP('localhost')
+    S = smtplib.SMTP_SSL(SMTPSERVER)
+    S.login(ACCOUNT, PASSWORD)
     S.sendmail(None, to, mail)
     S.quit()
 
