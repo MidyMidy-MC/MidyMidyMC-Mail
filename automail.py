@@ -20,7 +20,7 @@ filterfile = 'filter.txt'
 MASK = '***奇怪***'
 SUBJECT = 'MidyMidyIII-%sIRC聊天记录'
 ME = 'mc_bot <mc@localhost>'
-TO = 'tonychee <jojolee1992@126.com>'
+TO = 'midymidybot <midymidybot@outlook.com>'
 CONTENT_PREFIX = '%s聊天记录' % time.strftime('%Y年%m月%d日', yesterday)
 
 # #######################以上内容可修改#################################
