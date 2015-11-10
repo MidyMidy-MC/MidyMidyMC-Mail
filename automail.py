@@ -23,10 +23,7 @@ ME = 'MidyMidyBot <midymidybot@outlook.com>'
 TO = 'MidyMidyMC <tonychee1989@gmail.com>'
 CONTENT_PREFIX = '%s聊天记录' % time.strftime('%Y年%m月%d日', yesterday)
 
-SMTPSERVER = 'smtp-mail.outlook.com'
-SMTPPORT = 587
-ACCOUNT = 'midymidybot@outlook.com'
-PASSWORD = 'PASSWORD'
+SMTPSERVER = 'localhost'
 
 # #######################以上内容可修改#################################
 
@@ -62,7 +59,7 @@ def make_mail(payload):
     msg['Content-Type'] = 'text/plain; charset=utf-8'
     msg['Content-Transfer-Encoding'] = '8bit'
     msg.set_payload(payload)
-    return msg.as_string()
+    return msg.as_string(unixfrom=True)
 
 
 def send_mail(mail):
@@ -70,9 +67,7 @@ def send_mail(mail):
     r = re.compile(r'<(.*@.*)>')
     from_ = r.findall(ME)[0]
     to = r.findall(TO)[0]
-    S = smtplib.SMTP(SMTPSERVER, port=SMTPPORT)
-    S.starttls()
-    S.login(ACCOUNT, PASSWORD)
+    S = smtplib.SMTP(SMTPSERVER)
     S.sendmail(from_, to, mail)
     S.quit()
 
