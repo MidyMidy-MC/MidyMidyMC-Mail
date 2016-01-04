@@ -18,6 +18,7 @@ logfile = os.environ['HOME'] + '/.znc/users/MidyMidyBot/moddata/log/#MidyMidymc_
 filterfile = 'filter.txt'
 
 MASK = '***奇怪***'
+NONEWS = '--- しかし、新鲜事ない ---\n---然而，并没有什么新鲜事---'
 SUBJECT = 'MidyMidyIII-%sIRC聊天记录'
 ME = 'MidyMidyBot <midymidybot@outlook.com>'
 TO = 'MidyMidyMC <tonychee1989@gmail.com>'
@@ -31,12 +32,15 @@ SMTPSERVER = 'localhost'
 def gen_content():
     '''邮件正文生成'''
     mail = '%s\n\n' % CONTENT_PREFIX
-    for line in open(logfile):
-        if re.search(r'\*\*\*', line):
-            continue
+    try:
+        for line in open(logfile):
+            if re.search(r'\*\*\*', line):
+                continue
 
-        line = re.sub(r'\x03[0-9]{2}|\x0f', '', line)
-        mail += filter(line)
+            line = re.sub(r'\x03[0-9]{2}|\x0f', '', line)
+            mail += filter(line)
+    except IOError:
+        mail += NONEWS
     return mail
 
 
