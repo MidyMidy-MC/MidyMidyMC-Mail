@@ -48,7 +48,7 @@ def filter(msg):
     '''奇怪的词语过滤'''
     for line in open('filter.txt', 'r'):
         if line != '':
-            msg = re.sub(line.replace('\n', ''), MASK, msg)
+            msg = msg.replace(line.replace('\n', ''), MASK)
 
     return msg
 
