@@ -37,7 +37,7 @@ def gen_content():
             if re.search(r'\*\*\*', line):
                 continue
 
-            line = re.sub(r'\x03[0-9]{2}|\x0f', '', line)
+            line = re.sub(r'\x03[0-9]{2}|\x0f|[\x02\x0F\x16\x1D\x1F]|\x03(\d{0,2}(,\d{0,2})?)?', '', line)
             mail += filter(line)
     except IOError:
         mail += NONEWS
